@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c709f83e4b72af4e8bfaefa89f0bc5d, type: 3}
+  m_Name: Pants_1
+  m_EditorClassIdentifier: 
+  itemName: Pirate Pants
+  maximumAmount: 1
+  itemType: 4
+  clothType: 3
+  itemPrefab: {fileID: 1152311693346312075, guid: 31b0a1dfa75e05a4ba48eedcbc7a0b1b, type: 3}
+  clothingPrefab: {fileID: 919132149155446097, guid: 813255d2da4af504b8ddcba59751b54f, type: 3}
+  icon: {fileID: 21300000, guid: c378c5913c2453d419e04ef1f05f4525, type: 3}
+  itemDescription: 
+  isConsumeable: 0
+  inHandName: 
+  changeHealth: 0
+  changeMana: 0
+  damage: 0
+  healAmount: 0

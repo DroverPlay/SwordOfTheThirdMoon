@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c709f83e4b72af4e8bfaefa89f0bc5d, type: 3}
+  m_Name: Hat_1
+  m_EditorClassIdentifier: 
+  itemName: Magic Hat
+  maximumAmount: 1
+  itemType: 4
+  clothType: 1
+  itemPrefab: {fileID: 5933577287576061842, guid: d4cf411c09c15d7479fb85a9e9f7120a, type: 3}
+  clothingPrefab: {fileID: 919132149155446097, guid: fb493ae6da2090b4aa301bf0bcbb8ef5, type: 3}
+  icon: {fileID: 21300000, guid: a83a4569756e5954d81d3354d51e0585, type: 3}
+  itemDescription: 
+  isConsumeable: 0
+  inHandName: 
+  changeHealth: 0
+  changeMana: 0
+  damage: 0
+  healAmount: 0
