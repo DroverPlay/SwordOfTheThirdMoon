@@ -212,7 +212,6 @@ public class InventoryManager : MonoBehaviour
     public void RemoveItemFromSlot(int slotID)
     {
         InventorySlot slot = slots[slotID];
-
         if (slot.clothType != ClothType.None && !slot.isEmpty)
         {
             foreach (ClothAdder clothAdder in _clothAdders)
@@ -233,7 +232,6 @@ public class InventoryManager : MonoBehaviour
         slot.item = _item;
         slot.isEmpty = false;
         slot.SetIcon(_item.icon);
-        
         if (_amount <= _item.maximumAmount)
         {
             slot.amount = _amount;
@@ -251,7 +249,6 @@ public class InventoryManager : MonoBehaviour
                 slot.itemAmountText.text = slot.amount.ToString();
             }
         }
-
         if (slot.clothType != ClothType.None)
         {
             foreach (ClothAdder clothAdder in _clothAdders)

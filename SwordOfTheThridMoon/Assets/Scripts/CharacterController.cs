@@ -11,6 +11,7 @@ public class CharacterController : MonoBehaviour
     public Animator anim;
     public Rigidbody rig;
     public Transform mainCamera;
+    private Camera _mainCamera;
     public float jumpForce = 3.5f;
     public float walkingSpeed = 2f;
     public float runningSpeed = 6f;
@@ -26,13 +27,10 @@ public class CharacterController : MonoBehaviour
     [SerializeField] GameObject _escPanel;
     public bool isOpened;
     Camera cashedCamera;
-    //public Transform HitTarget;
-    //public Vector3 hitTargetOffset;
-
 
     void Start()
     {
-
+        _mainCamera = Camera.main;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         cashedCamera = Camera.main;
@@ -79,10 +77,8 @@ public class CharacterController : MonoBehaviour
         Cursor.visible = false;
         isOpened = false;
     }
-
     private void Update()
     {
-
         //открытие эскейп меню
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -108,22 +104,16 @@ public class CharacterController : MonoBehaviour
                 ReturnToGame();
             }
         }
-
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            //Debug.Log("Нажал на левую кнопку мышки");
             if (quickslotInventory.activeSlot != null)
             {
-                //Debug.Log("Слот не пустой");
                 if (quickslotInventory.activeSlot.item != null)
                 {
-                    //Debug.Log("Предмет пресутствует");
                     if (quickslotInventory.activeSlot.item.itemType == ItemType.Instrument)
                     {
-                        //Debug.Log("В нем лежит инструмент");
                         if (inventoryManager.isOpened == false)
                         {
-                            //Debug.Log("Делаем удар");
                             anim.SetBool("Hit", true);
                         }
                     }
@@ -134,6 +124,22 @@ public class CharacterController : MonoBehaviour
         {
             anim.SetBool("Hit", false);
         }
+
+        //Анимация подбора предметов
+        Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        float reachDistance = 3;
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (Physics.Raycast(ray, out hit, reachDistance))
+            {
+                if (hit.collider.gameObject.GetComponent<Item>() != null)
+                {
+                    anim.SetTrigger("Take");
+                }
+            }
+        }
+
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, mainCamera.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
         {
@@ -156,7 +162,6 @@ public class CharacterController : MonoBehaviour
             jumper = false;
             Debug.Log("ПРЫЖОК");
         }
-
         ///Анимация наклона туловища и головы
         Ray desiredTargetRay = cashedCamera.GetComponent<Camera>().ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
         Vector3 desiredTargetPosition = desiredTargetRay.origin + desiredTargetRay.direction * 0.7f;
