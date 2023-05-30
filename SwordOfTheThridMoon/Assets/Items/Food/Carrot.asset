@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c709f83e4b72af4e8bfaefa89f0bc5d, type: 3}
+  m_Name: Carrot
+  m_EditorClassIdentifier: 
+  itemName: Carrot
+  maximumAmount: 10
+  itemType: 1
+  clothType: 0
+  itemPrefab: {fileID: 1848085701261238493, guid: d8cf75c4cdbbd9a4abc9d3f1f20bee9a, type: 3}
+  clothingPrefab: {fileID: 0}
+  icon: {fileID: 21300000, guid: 2e159a828e564d74d9de4bdb9b8202d7, type: 3}
+  itemDescription: 
+  isConsumeable: 1
+  inHandName: Carrot
+  changeHealth: 5
+  changeMana: 5
+  damage: 0
+  healAmount: 5

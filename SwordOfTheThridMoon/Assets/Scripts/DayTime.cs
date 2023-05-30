@@ -13,12 +13,17 @@ public class DayTime : MonoBehaviour
     [SerializeField, Range(0f, 1f)] float timeProgress;
 
     [SerializeField] Light dirLight;
+    [SerializeField] Transform sun;
 
     Vector3 defaultAngles;
+    Vector3 defaultSun;
 
-    void Start() => defaultAngles = dirLight.transform.localEulerAngles;
+    void Start() {
+        defaultAngles = dirLight.transform.localEulerAngles;
+        defaultSun = sun.transform.localEulerAngles;
+    }
 
-    void Update()
+    void FixedUpdate()
     {
         if (Application.isPlaying)
             timeProgress += Time.deltaTime / timeDayInSeconds;
@@ -29,6 +34,8 @@ public class DayTime : MonoBehaviour
         dirLight.color = directionalLightGradient.Evaluate(timeProgress);
         RenderSettings.ambientLight = ambientLightGradient.Evaluate(timeProgress);
 
+
         dirLight.transform.localEulerAngles = new Vector3(x:360f * timeProgress - 90, y: defaultAngles.x, defaultAngles.z);
+        sun.transform.localEulerAngles = new Vector3(x: 360f * timeProgress + 90, y: defaultSun.x, defaultSun.z);
     }
 }

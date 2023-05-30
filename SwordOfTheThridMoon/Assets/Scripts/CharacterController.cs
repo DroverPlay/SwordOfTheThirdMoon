@@ -124,7 +124,6 @@ public class CharacterController : MonoBehaviour
         {
             anim.SetBool("Hit", false);
         }
-
         //Анимация подбора предметов
         Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -139,7 +138,6 @@ public class CharacterController : MonoBehaviour
                 }
             }
         }
-
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, mainCamera.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
         {
