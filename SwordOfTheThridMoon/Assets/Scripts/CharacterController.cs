@@ -158,7 +158,6 @@ public class CharacterController : MonoBehaviour
         {
             anim.SetTrigger("Jump");
             jumper = false;
-            Debug.Log("ПРЫЖОК");
         }
         ///Анимация наклона туловища и головы
         Ray desiredTargetRay = cashedCamera.GetComponent<Camera>().ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
@@ -174,14 +173,12 @@ public class CharacterController : MonoBehaviour
         Vector3 movingVector;
         movingVector = Vector3.ClampMagnitude(camF.normalized * Input.GetAxis("Vertical") * currentSpeed + camR.normalized * Input.GetAxis("Horizontal") * currentSpeed, currentSpeed);
         anim.SetFloat("magnitude", movingVector.magnitude / currentSpeed);
-        //Debug.Log(movingVector.magnitude / currentSpeed);
         rig.velocity = new Vector3(movingVector.x, rig.velocity.y, movingVector.z);
         rig.angularVelocity = Vector3.zero;
     }
     public void Jump()
     {
         rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        Debug.Log("ПРЫЖОК_2");
     }
     public void Hit()
     {

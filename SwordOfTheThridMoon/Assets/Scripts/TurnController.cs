@@ -6,6 +6,7 @@ public class TurnController : MonoBehaviour
 {
     [SerializeField] private InventoryManager _inventoryManager;
     [SerializeField] private CharacterController _characterController;
+    [SerializeField] private MenuManager _menuManager;
     private Animator _animator;
     private float slowMouseX;
     private void Start()
@@ -15,21 +16,23 @@ public class TurnController : MonoBehaviour
     private void Update()
     {
         //Отключение поворотов во время использования инвентаря
-        if (_inventoryManager.isOpened == true) 
+        if (_inventoryManager.isOpened == true)
         {
             slowMouseX = 0;
-            _animator.SetFloat("MouseX", slowMouseX);
         }
-        if (_characterController.isOpened == true)
+        else if (_characterController.isOpened == true)
         {
             slowMouseX = 0;
-            _animator.SetFloat("MouseX", slowMouseX);
+        }
+        else if (_menuManager.isOpened == true)
+        {
+            slowMouseX = 0;
         }
         else
         {
             float mouseX = Input.GetAxis("Mouse X");
             slowMouseX = Mathf.Lerp(slowMouseX, mouseX, 10 * Time.deltaTime);
-            _animator.SetFloat("MouseX", slowMouseX);
         }
+        _animator.SetFloat("MouseX", slowMouseX);
     }
 }

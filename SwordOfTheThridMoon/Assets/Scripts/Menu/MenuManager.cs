@@ -15,6 +15,7 @@ public class MenuManager : MonoBehaviour
     public float _currentSensitivity;
     private int _currentResolutionIndex;
     private bool _continue = false;
+    [SerializeField] public bool isOpened;
 
     [Header("Settings Menu")]
     [SerializeField] private AudioMixer _audioMixer;
@@ -87,6 +88,7 @@ public class MenuManager : MonoBehaviour
         _volume.value = volume;
         PlayerPrefs.SetFloat("Volume", volume);
         PlayerPrefs.SetFloat("Sensitivity", sensitivity);
+        PlayerPrefs.Save();
     }
 
     //Загрузка настроек
