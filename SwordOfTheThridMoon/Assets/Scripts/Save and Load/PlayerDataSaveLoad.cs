@@ -29,7 +29,7 @@ public class PlayerDataSaveLoad : MonoBehaviour
     {
         PlayerData data = BinarySavingSystem.LoadPlayer();
 
-        _indicators.healthAmount = data.health;
+        Indicators.healthAmount = data.health;
         _indicators.manaAmount = data.mana;
 
         _customCharacterController.transform.position =

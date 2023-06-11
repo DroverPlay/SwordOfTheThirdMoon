@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class Indicators : MonoBehaviour
 {
     public Image healthBar, manaBar;
-    public float healthAmount = 100;
+    public static float healthAmount = 100;
     public float manaAmount = 60;
     private float uiManaAmount = 60;
     private float uiHealthAmount = 100;
-    //DamageFromPerson damage;
+    private static bool gameOver = false;
+    DamageFromPerson damage;
 
     public float secondsToFillMana = 60f;
     private float changeFactor = 5f;
@@ -22,39 +23,34 @@ public class Indicators : MonoBehaviour
 
     void Update()
     {
-        if (manaAmount > 0)
+        if (manaAmount < 100)
         {
             manaAmount += 100 / secondsToFillMana * Time.deltaTime;
             uiManaAmount = Mathf.Lerp(uiManaAmount, manaAmount, Time.deltaTime * changeFactor);
             manaBar.fillAmount = uiManaAmount / 100;
-            
         }
-        if (healthAmount > 0)
+        if (healthAmount < 100)
         {
             healthAmount += 100 / secondsToFillMana * Time.deltaTime;
             uiHealthAmount = Mathf.Lerp(uiHealthAmount, healthAmount, Time.deltaTime * changeFactor);
             healthBar.fillAmount = uiHealthAmount / 100;
-
         }
-
-        //Урон по персонажу
-        //if (damage.hit == true)
-        //{
-        //    if (damage.count >= 1)
-        //    {
-        //        healthAmount -= damage.count;
-        //        healthBar.fillAmount = healthAmount / 100;
-        //    }
-        //}
-    }
-    public void DamagePerson(int damage)
-    {
-        if(damage >= 1)
+        if (gameOver == true)
         {
-            healthAmount -= damage;
-            healthBar.fillAmount = healthAmount / 100;
+            //Что сделать при проигрыше?
         }
+
     }
+    public static void DamagePerson(int damage)
+    {
+        healthAmount -= damage;
+        if (healthAmount <= 0)
+        {
+            gameOver = true;
+        }
+        Debug.Log("Количество здоровья изменилось на " + damage);
+    }
+
     public void ChangeManaAmount(float changeValue)
     {
         manaAmount += changeValue;

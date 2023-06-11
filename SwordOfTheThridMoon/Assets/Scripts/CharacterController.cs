@@ -22,6 +22,12 @@ public class CharacterController : MonoBehaviour
     public Transform AimTarget;
     public static bool _bool;
 
+    private bool play = true;
+
+    //[SerializeField] private AudioSource _walkSound;
+    //[SerializeField] private AudioSource _runSound;
+    //[SerializeField] private AudioSource _jumpSound;
+
     [SerializeField] private GameObject crosshair;
     [SerializeField] private CinemachineVirtualCamera CVC;
     [SerializeField] GameObject _escPanel;
@@ -95,34 +101,12 @@ public class CharacterController : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 ContinueData.boolEsc = isOpened;
-                Debug.Log("ESC boll - " + ContinueData.boolEsc);
             }
             else
             {
                 ContinueData.boolEsc = false;
-                Debug.Log("ESC boll - " + ContinueData.boolEsc);
                 ReturnToGame();
             }
-        }
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            if (quickslotInventory.activeSlot != null)
-            {
-                if (quickslotInventory.activeSlot.item != null)
-                {
-                    if (quickslotInventory.activeSlot.item.itemType == ItemType.Instrument)
-                    {
-                        if (inventoryManager.isOpened == false)
-                        {
-                            anim.SetBool("Hit", true);
-                        }
-                    }
-                }
-            }
-        }
-        if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            anim.SetBool("Hit", false);
         }
         //Анимация подбора предметов
         Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -148,12 +132,17 @@ public class CharacterController : MonoBehaviour
             else
             {
                 Run();
+                if (play == true)
+                {
+                    play = false;
+                }
             }
         }
         else
         {
             Walk();
         }
+        play = true;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetTrigger("Jump");
@@ -166,6 +155,28 @@ public class CharacterController : MonoBehaviour
     }
     void FixedUpdate()
     {
+        ///Удар
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (quickslotInventory.activeSlot != null)
+            {
+                if (quickslotInventory.activeSlot.item != null)
+                {
+                    if (quickslotInventory.activeSlot.item.itemType == ItemType.Instrument)
+                    {
+                        if (inventoryManager.isOpened == false)
+                        {
+                            anim.SetBool("Hit", true);
+                        }
+                    }
+                }
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            anim.SetBool("Hit", false);
+        }
+
         Vector3 camF = mainCamera.forward;
         Vector3 camR = mainCamera.right;
         camF.y = 0;

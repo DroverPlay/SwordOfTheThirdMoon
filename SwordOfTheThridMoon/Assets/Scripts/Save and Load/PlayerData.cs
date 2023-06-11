@@ -16,7 +16,7 @@ public class PlayerData
 
     public PlayerData(Indicators indicators, CharacterController player, InventoryManager inventoryManager)
     {
-        health = indicators.healthAmount;
+        health = Indicators.healthAmount;
         mana = indicators.manaAmount;
 
 
