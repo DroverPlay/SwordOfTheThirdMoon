@@ -8,6 +8,7 @@ public class TurnController : MonoBehaviour
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private MenuManager _menuManager;
     private Animator _animator;
+    private Dialog _dialog;
     private float slowMouseX;
     private void Start()
     {
@@ -25,6 +26,10 @@ public class TurnController : MonoBehaviour
             slowMouseX = 0;
         }
         else if (_menuManager.isOpened == true)
+        {
+            slowMouseX = 0;
+        }
+        else if (ContinueData.dialogue == true)
         {
             slowMouseX = 0;
         }

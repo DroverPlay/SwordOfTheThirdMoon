@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Maze_1.unity
     guid: c9e01c0aa23e43e43a0ef4285b033b4b
+  - enabled: 1
+    path: Assets/Scenes/Maze_2.unity
+    guid: 818bc2b03ea50cb4693596feae188110
   m_configObjects: {}

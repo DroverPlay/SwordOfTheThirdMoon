@@ -9,7 +9,7 @@ public class Item : MonoBehaviour , IInteractable
 
     public string GetDescription()
     {
-        return "Press [E] to <color=green>pick up</color> the item";
+        return "Нажмите [E] что-бы <color=green>подобрать</color> предмет.";
     }
     public void Interact()
     {

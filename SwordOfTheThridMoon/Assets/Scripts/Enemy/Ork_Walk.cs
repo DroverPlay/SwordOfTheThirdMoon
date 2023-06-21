@@ -8,7 +8,6 @@ public class Ork_Walk : StateMachineBehaviour
     float timer;
     List<Transform> points = new List<Transform>();
     NavMeshAgent agent;
-    private bool firspoint = false;
 
     Transform player;
     float chaseRange = 10;
@@ -22,18 +21,10 @@ public class Ork_Walk : StateMachineBehaviour
             points.Add(t);
         }
         agent = animator.GetComponent<NavMeshAgent>();
-        if (firspoint == false)
-        {
-            agent.SetDestination(points[0].position);
-            firspoint = true;
-            Debug.Log("Пошел на первую точку");
-        }
-        else
-        {
-            int p = Random.Range(0, points.Count);
-            agent.SetDestination(points[p].position);
-            Debug.Log("Выбрал точку" + p +" и пошел");
-        }
+
+        int p = Random.Range(0, points.Count);
+        agent.SetDestination(points[p].position);
+        Debug.Log("Выбрал точку" + p + " и пошел");
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

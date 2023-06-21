@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Indicators : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class Indicators : MonoBehaviour
         }
         if (gameOver == true)
         {
-            //Что сделать при проигрыше?
+            SceneManager.LoadScene("GameScene");
         }
 
     }
@@ -48,7 +49,6 @@ public class Indicators : MonoBehaviour
         {
             gameOver = true;
         }
-        Debug.Log("Количество здоровья изменилось на " + damage);
     }
 
     public void ChangeManaAmount(float changeValue)

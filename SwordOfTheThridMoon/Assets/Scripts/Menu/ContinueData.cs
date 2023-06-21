@@ -6,4 +6,8 @@ public static class ContinueData
 {
     public static bool boolContinue;
     public static bool boolEsc;
+    public static bool level2;
+    public static bool level3;
+    public static bool dialogue;
+    public static bool taked_story_item;
 }

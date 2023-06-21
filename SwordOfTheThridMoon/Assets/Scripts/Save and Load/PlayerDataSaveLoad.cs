@@ -50,4 +50,38 @@ public class PlayerDataSaveLoad : MonoBehaviour
             }
         }
     }
+    
+    public void SaveLevel()
+    {
+        bool _level2 = ContinueData.level2;
+        bool _level3 = ContinueData.level3;
+        if (_level2)
+        {
+            PlayerPrefs.SetInt("Level2", 1);
+            PlayerPrefs.Save();
+        }
+        if (_level3)
+        {
+            PlayerPrefs.SetInt("Level3", 1);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public void LoadLevel()
+    {
+        if (PlayerPrefs.HasKey("Level2"))
+        {
+            if (PlayerPrefs.GetInt("Level2") == 1)
+            {
+                ContinueData.level2 = true;
+            }
+        }
+        if (PlayerPrefs.HasKey("Level3"))
+        {
+            if (PlayerPrefs.GetInt("Level3") == 1)
+            {
+                ContinueData.level3 = true;
+            }
+        }
+    }
 }
