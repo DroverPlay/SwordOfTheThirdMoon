@@ -34,6 +34,11 @@ public class Portal_Teleport : MonoBehaviour
                     ContinueData.level3 = true;
                     Debug.Log("Уровень третий доступен!");
                 }
+                else if (numberPortal == 3)
+                {
+                    ContinueData.level4 = true;
+                    Debug.Log("Уровень четвертый доступен!");
+                }
             }
         }
         else

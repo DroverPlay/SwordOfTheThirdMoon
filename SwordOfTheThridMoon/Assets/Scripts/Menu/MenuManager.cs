@@ -62,7 +62,7 @@ public class MenuManager : MonoBehaviour
     // нопка игры
     public void Play()
     {
-        OpenScene("GameScene");
+        OpenScene("First_play");
         ContinueData.boolContinue = false;
     }
 

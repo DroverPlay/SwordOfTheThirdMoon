@@ -15,6 +15,7 @@ public class Dialog_System : MonoBehaviour
     public GameObject dialogManager;
     private Animator animator;
     private bool endingDialogue;
+    
 
     void Start()
     {

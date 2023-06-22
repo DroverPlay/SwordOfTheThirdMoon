@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: f40788ad6300ea241977089822074562
   - enabled: 1
+    path: Assets/Scenes/First_play.unity
+    guid: d033c8c3aab1618478c8d4e1a3540849
+  - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 1cc6e179c36e05c41bb77b106caa3c63
   - enabled: 1
@@ -23,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Maze_2.unity
     guid: 818bc2b03ea50cb4693596feae188110
+  - enabled: 1
+    path: Assets/Scenes/Maze_3.unity
+    guid: 900276b27f4e3e34ab243fe91b6dad59
   m_configObjects: {}
